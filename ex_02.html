@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 양식</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:last-child {
+            background-color: #f44336;
+        }
+
+        button:last-child:hover {
+            background-color: #e53935;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+    </style>
+    <!-- css -->
+</head>
+<body>
+    <!-- html -->
+    <h3>회원가입</h3>
+    <form id="signupForm">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" id="username" placeholder="아이디를 입력하세요"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" id="password" placeholder="비밀번호를 입력하세요"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 확인</td>
+                <td><input type="password" id="confirmPassword" placeholder="비밀번호를 다시 입력하세요"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" id="name" placeholder="이름을 입력하세요"></td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <input type="radio" name="gender" value="female">여성 
+                    <input type="radio" name="gender" value="male">남성
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="text" id="email" placeholder="이메일 아이디"> @ 
+                    <select id="emailDomain">
+                        <option value="">선택</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="google.com">google.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="button" onclick="window.history.back();">닫기</button>
+                    <button type="submit">회원가입</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+
+    <script>
+
+    </script>
+
+    <script>
+        //js
+         document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 동작 방지
+
+        
+            const username = document.getElementById('username').value.trim();
+
+            if (!username) {
+                alert('아이디를 입력해주세요.');
+                return;
+            }
+
+            
+
+        //     alert('회원가입이 완료되었습니다.');
+        //     location.href = 'login.html'; // 다음 페이지로 이동
+
+           });
+
+    </script>
+
+
+
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 폼 제출 동작 방지
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const emailDomain = document.getElementById('emailDomain').value;
+
+            // 폼 검증 로직
+            if (!username) {
+                alert('아이디를 입력해주세요.');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('비밀번호는 6자리 이상이어야 합니다.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            if (!name) {
+                alert('이름을 입력해주세요.');
+                return;
+            }
+
+            if (!email || !emailDomain) {
+                alert('이메일을 올바르게 입력해주세요.');
+                return;
+            }
+
+            alert('회원가입이 완료되었습니다.');
+            location.href = 'login.html'; // 다음 페이지로 이동
+        });
+    </script>
+
+</body>
+</html>

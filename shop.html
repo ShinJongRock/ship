@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div style="padding: 100px;">
+
+
+        <!-- Navigation Bar -->
+        <header class="navbar">
+            <div class="container">
+                <h1 class="logo">MyWebsite</h1>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="cta-button">Get Started</button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Discover Powerful Features</h2>
+                <p>Build your dream website with our intuitive tools and features.</p>
+                <button class="cta-button">Learn More</button>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h3>Our Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h4>Easy to Use</h4>
+                        <p>Intuitive drag-and-drop interface to build your website.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Responsive Design</h4>
+                        <p>Your website will look great on any device.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Customizable</h4>
+                        <p>Choose from a variety of templates and styles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
+<script>
+    // JavaScript for Interactive Features
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Smooth scroll for navigation links
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjust offset for fixed navbar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Call-to-Action (CTA) button alert
+        const ctaButton = document.querySelector('.cta-button');
+
+        ctaButton.addEventListener('click', () => {
+            alert('Thank you for clicking! This is just a demo.');
+        });
+
+        // Example of a dynamic feature: Highlight active section on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 80; // Adjust for navbar height
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').substring(1) === currentSection) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    });
+
+</script>
